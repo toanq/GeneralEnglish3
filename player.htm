@@ -1,0 +1,57 @@
+<html>
+<head>
+<style>
+audio {
+    width: 100%;
+}
+h1{
+	margin: 0;
+	color: #221f3b;
+}
+h2{
+	margin: 0;
+}
+body{
+	text-align: center;
+	margin: 0;
+	background: #6f4a8e;
+}
+a:visited, a{
+	padding-left: 1em;
+	color: #ebebeb;
+	text-decoration: none;
+	display: inline-block;
+	width: -webkit-fill-available;
+	vertical-align: middle;
+	height: 1.2em;
+	margin-right: 2%;
+	margin-left: 2%;
+}
+.split{
+	width:100%;
+	height:2px;
+	background:#050505;
+}
+</style>
+</head>
+<body>
+	<audio controls id="player"></audio>
+	<script>
+		ePlayer = document.getElementById("player");
+		var filename = /\?f=(.+?)$/g.exec(window.location.href)
+		if (filename==undefined) {
+			ePlayer.setAttribute("style","display:none;")
+			for (let i=1;i<=5;i++){
+				document.write("<h1>SAMPLE TEST "+i+"</h1><h2>");
+				for (let j=1;j<=5;j++){
+					document.writeln("<a href='player.htm?f="+i+"."+j+"'>PART "+j+"</a><br>")
+				}
+				document.writeln("</h2>");
+				document.writeln("<div class='split'></div>");
+			}
+		} else {
+			ePlayer.setAttribute("src",filename[1]+".mp3");
+		}
+	</script>
+</body>
+</html>
